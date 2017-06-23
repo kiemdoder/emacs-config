@@ -79,7 +79,8 @@
                                                                        (name . "^\\*Messages\\*$")))))))
 
 ;;Go
-(add-to-list 'load-path "~/dev/go/src/github.com/dougm/goflymake")
+;;to install goflymake -> go get -u github.com/dougm/goflymake
+(add-to-list 'load-path "~/.emacs.d/personal/goflymake")
 (require 'go-flycheck)
 
 (add-hook 'go-mode-hook (lambda ()
