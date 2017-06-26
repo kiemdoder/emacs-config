@@ -5,9 +5,14 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq-default tab-width 2)
+(ido-mode t)
+
 (use-package paredit :ensure t)
 
-(ido-mode t)
+;;multiple-cursors
+(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+(global-set-key (kbd "M->") 'mc/edit-lines)
 
 ;;elisp
 (add-hook 'emacs-lisp-mode-hook (lambda ()
@@ -139,14 +144,20 @@
                                       (local-set-key (kbd "M-[") 'previous-error)     ; Go to previous error or msg
                                       ))))
 
-;;go-eldoc           
-;;go-guru            
-;;go-projectile
-;;go-rename          
-;;gorepl-mode
+(use-package go-eldoc :ensure t)           
+(use-package go-guru :ensure t)            
+(use-package go-projectile :ensure t)
+(use-package go-rename :ensure t)          
+(use-package gorepl-mode :ensure t)
 
-;;to install goflymake -> go get -u github.com/dougm/goflymake
-(add-to-list 'load-path "~/.emacs.d/personal/goflymake")
-(require 'go-flycheck)
+;;goflymake
+(let ((go-path (getenv "GOPATH")))
+  (if go-path
+      (progn
+        (let ((goflymake-path (format "%s/src/github.com/dougm/goflymake" go-path)))
+          (if (file-exists-p goflymake-path)
+              (use-package go-flycheck :load-path goflymake-path)
+            (display-warning :warning "Could not find goflymake. Install goflymake with: go get -u github.com/dougm/goflymake"))))
+    (display-warning :warning "Trying to find goflymake but GOPATH is not set")))
 
 ;;;
