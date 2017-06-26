@@ -117,7 +117,7 @@
 ;;Go
 (use-package go-mode
   :ensure t
-  :config (progn            
+  :config (progn
             (add-hook 'go-mode-hook (lambda ()
                                       (flycheck-mode t)
                                       (gorepl-mode t)
