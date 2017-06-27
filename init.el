@@ -25,7 +25,12 @@
 ;;ace
 (use-package ace-window
   :ensure t
-  :config (global-set-key (kbd "C-x o") #'ace-window))
+  :config (progn
+            (global-set-key [remap other-window] 'ace-window)
+                                        ;make ace window numbers a little bigger
+            (custom-set-faces
+             '(aw-leading-char-face
+               ((t (:inherit ace-jump-face-foreground :height 3.0)))))))
 
 ;;smooth-scrolling
 (use-package smooth-scrolling
