@@ -127,7 +127,7 @@
 ;;Go
 (use-package go-mode
   :ensure t
-  :config (progn            
+  :config (progn
             (add-hook 'go-mode-hook (lambda ()
                                       (flycheck-mode t)
                                       (gorepl-mode t)
@@ -149,10 +149,10 @@
                                       (local-set-key (kbd "M-[") 'previous-error)     ; Go to previous error or msg
                                       ))))
 
-(use-package go-eldoc :ensure t)           
-(use-package go-guru :ensure t)            
+(use-package go-eldoc :ensure t)
+(use-package go-guru :ensure t)
 (use-package go-projectile :ensure t)
-(use-package go-rename :ensure t)          
+(use-package go-rename :ensure t)
 (use-package gorepl-mode :ensure t)
 
 ;;goflymake
