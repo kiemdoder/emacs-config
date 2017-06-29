@@ -7,6 +7,9 @@
 
 (setq-default tab-width 2)
 
+;;guru
+(setq prelude-guru nil)
+
 ;;multiple-cursors
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 (global-set-key (kbd "M->") 'mc/edit-lines)
