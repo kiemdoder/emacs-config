@@ -101,6 +101,15 @@
   :ensure t
   :config (add-hook 'org-mode-hook #'org-bullets-mode))
 
+(use-package htmlize :ensure t) ;fix code colour coding in org
+
+;;Reveal
+(use-package ox-reveal
+  :ensure t
+  :config (progn
+            (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+            (setq org-reveal-mathjax t)))
+
 ;;Do Re Mi
 (use-package doremi-cmd
   :ensure t
