@@ -6,9 +6,6 @@
   (package-install 'use-package))
 
 (setq-default tab-width 2)
-(ido-mode t)
-
-(use-package paredit :ensure t)
 
 ;;multiple-cursors
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
@@ -64,7 +61,11 @@
             ;;clojure-mode formatting
             (require 'clojure-mode)
             (put-clojure-indent 'GET 2)
-            (put-clojure-indent 'POST 2)))
+            (put-clojure-indent 'POST 2)
+            (setq cider-cljs-lein-repl
+                  "(do (require 'figwheel-sidecar.repl-api)
+                       (figwheel-sidecar.repl-api/start-figwheel!)
+                       (figwheel-sidecar.repl-api/cljs-repl))")))
 
 ;;clj-refactor
 (use-package clj-refactor
@@ -132,14 +133,14 @@
                                       (flycheck-mode t)
                                       (gorepl-mode t)
                                       (go-eldoc-setup)
-                                      
+
                                       (if (not (string-match "go" compile-command))   ; set compile command default
                                           (set (make-local-variable 'compile-command)
                                                "go build -v && go test -v && go vet"))
 
                                       ;; guru settings
                                       (go-guru-hl-identifier-mode)                    ; highlight identifiers
-                                      
+
                                       ;; Key bindings specific to go-mode
                                       (local-set-key (kbd "M-.") 'godef-jump)         ; Go to definition
                                       (local-set-key (kbd "M-,") 'pop-tag-mark)       ; Return from whence you came
