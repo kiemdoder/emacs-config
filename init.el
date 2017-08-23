@@ -129,6 +129,7 @@
 ;;iBuffer
 (add-hook 'ibuffer-mode-hook (lambda ()
                                (setq ibuffer-filter-groups '(("Clojure" (mode . clojure-mode))
+                                                             ("Clojurescript" (mode . clojurescript-mode))
                                                              ("Cider" (name . "^\\*cider-.*"))
                                                              ("Dired" (mode . dired-mode))
                                                              ("Go" (mode . go-mode))
