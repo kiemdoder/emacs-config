@@ -178,4 +178,9 @@
             (display-warning :warning "Could not find goflymake. Install goflymake with: go get -u github.com/dougm/goflymake"))))
     (display-warning :warning "Trying to find goflymake but GOPATH is not set")))
 
+
+;;groovy
+(use-package gradle-mode :ensure t)
+(use-package groovy-mode :ensure t)
+(use-package groovy-imports :ensure t)
 ;;;
