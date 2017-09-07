@@ -64,7 +64,9 @@
             ;;clojure-mode formatting
             (require 'clojure-mode)
             (put-clojure-indent 'GET 2)
+            (put-clojure-indent 'DELETE 2)
             (put-clojure-indent 'POST 2)
+            (put-clojure-indent 'PUT 2)
             (setq cider-cljs-lein-repl
                   "(do (require 'figwheel-sidecar.repl-api)
                        (figwheel-sidecar.repl-api/start-figwheel!)
@@ -129,6 +131,8 @@
 ;;iBuffer
 (add-hook 'ibuffer-mode-hook (lambda ()
                                (setq ibuffer-filter-groups '(("Clojure" (mode . clojure-mode))
+                                                             ("ClojureC" (name . ".*\.cljc"))
+                                                             ("Clojurescript" (mode . clojurescript-mode))
                                                              ("Cider" (name . "^\\*cider-.*"))
                                                              ("Dired" (mode . dired-mode))
                                                              ("Go" (mode . go-mode))
