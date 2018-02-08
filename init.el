@@ -141,48 +141,6 @@
                                                                        (name . "^\\*scratch\\*$")
                                                                        (name . "^\\*Messages\\*$")))))))
 
-;;Go
-(use-package go-mode
-  :ensure t
-  :config (progn
-            (add-hook 'go-mode-hook (lambda ()
-                                      (flycheck-mode t)
-                                      (gorepl-mode t)
-                                      (go-eldoc-setup)
-
-                                      (if (not (string-match "go" compile-command))   ; set compile command default
-                                          (set (make-local-variable 'compile-command)
-                                               "go build -v && go test -v && go vet"))
-
-                                      ;; guru settings
-                                      (go-guru-hl-identifier-mode)                    ; highlight identifiers
-
-                                      ;; Key bindings specific to go-mode
-                                      (local-set-key (kbd "M-.") 'godef-jump)         ; Go to definition
-                                      (local-set-key (kbd "M-,") 'pop-tag-mark)       ; Return from whence you came
-                                      (local-set-key (kbd "M-p") 'compile)            ; Invoke compiler
-                                      (local-set-key (kbd "M-P") 'recompile)          ; Redo most recent compile cmd
-                                      (local-set-key (kbd "M-]") 'next-error)         ; Go to next error (or msg)
-                                      (local-set-key (kbd "M-[") 'previous-error)     ; Go to previous error or msg
-                                      ))))
-
-(use-package go-eldoc :ensure t)
-(use-package go-guru :ensure t)
-(use-package go-projectile :ensure t)
-(use-package go-rename :ensure t)
-(use-package gorepl-mode :ensure t)
-
-;;goflymake
-(let ((go-path (getenv "GOPATH")))
-  (if go-path
-      (progn
-        (let ((goflymake-path (format "%s/src/github.com/dougm/goflymake" go-path)))
-          (if (file-exists-p goflymake-path)
-              (use-package go-flycheck :load-path goflymake-path)
-            (display-warning :warning "Could not find goflymake. Install goflymake with: go get -u github.com/dougm/goflymake"))))
-    (display-warning :warning "Trying to find goflymake but GOPATH is not set")))
-
-
 ;;groovy
 (use-package gradle-mode :ensure t)
 (use-package groovy-mode :ensure t)
