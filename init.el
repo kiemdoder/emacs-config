@@ -58,7 +58,9 @@
                                            (paredit-mode)
                                            (aggressive-indent-mode)))
             (add-hook 'cider-mode-hook #'eldoc-mode)
-            (add-hook 'cider-repl-mode-hook #'paredit-mode)
+            (add-hook 'cider-repl-mode-hook (lambda ()
+                                              (paredit-mode)
+                                              (eldoc-mode)))
             (setq cider-repl-use-pretty-printing t)
 
             ;;clojure-mode formatting
