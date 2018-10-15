@@ -88,6 +88,7 @@
 
 ;;flycheck-clojure
 (use-package flycheck-clojure
+  :disabled
   :ensure t
   :config (progn
             (eval-after-load 'flycheck '(flycheck-clojure-setup))
@@ -95,6 +96,7 @@
 
 ;;flycheck-pos-tip
 (use-package flycheck-pos-tip
+  :disabled
   :ensure t
   :config (when (boundp 'flycheck-pos-tip-error-messages)
             (eval-after-load 'flycheck
